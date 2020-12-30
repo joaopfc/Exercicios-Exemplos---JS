@@ -1,0 +1,20 @@
+
+
+body{
+    background-color: rgb(37, 99, 114);
+}
+
+.container{
+    background-color: white;
+    width: 600px;
+    height: 200px;
+    border-radius:10px ;
+    margin: 50px auto 0 auto;
+    padding: 5px 2%;
+    /* display: flex;
+    align-items: center;
+    justify-content: left;
+    
+    flex-direction: column; */
+}
+
