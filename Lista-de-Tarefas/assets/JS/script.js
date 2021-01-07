@@ -21,8 +21,8 @@
 
         function mostraInputTela(digitado){
             let criaNovoInput = document.createElement('input')
-            criaNovoInput.disabled
-            criaNovoInput.innerHTML = digitado
+            criaNovoInput.disabled = true
+            criaNovoInput.value = digitado
             formulario.appendChild(criaNovoInput)
         }
 

@@ -4,8 +4,8 @@
 - [X] Criar Evento para botão de adicionar tarefa e pegar value do input.
 - [X] Fazer que o evento não pegue nada quando estiver vazio o input.
 - [X] Criar função de Criar Tarefa e mostra pelo menos no console.
-- [] Criar Elemento que vai fica os valores digitados e mostrar na tela
-- [] Pegar valor do input quando clicar no ENTER e chama a função
+- [X] Criar Elemento que vai fica os valores digitados e mostrar na tela
+- [X] Pegar valor do input quando clicar no ENTER e chama a função
 - [] Criar função para limpa o input (Dica: colocar .focus() => Evento JS)
 - [] Criar Função para criar botão para apagar. Usar setAtribute para colocar a class
 - [] Criar evento para apagar a tarefa. (Dica descobrir onde esta sendo clicado para pega o botão, quando descobrir usar o .contains())
