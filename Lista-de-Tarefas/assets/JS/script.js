@@ -1,48 +1,77 @@
-    function escopo(){
+const inputTarefa = document.querySelector('.input-tarefa');
+const btnTarefa = document.querySelector('.btn-tarefa');
+const tarefas = document.querySelector('.tarefas');
 
-        const formulario = document.querySelector('.formulario')
-        const input = document.querySelector('.input-Adicionar')
-        const botao = document.querySelector('.adicionar')
+function criaLi() {
+  const li = document.createElement('li');
+  return li;
+}
 
-        function eventos(){
+inputTarefa.addEventListener('keypress', function(e) {
+  if (e.keyCode === 13) {
+    if (!inputTarefa.value) return;
+    criaTarefa(inputTarefa.value);
+  }
+});
 
-            botao.addEventListener('click', pegaValorInput)
+function limpaInput() {
+  inputTarefa.value = '';
+  inputTarefa.focus();
+}
 
-        }
-        eventos()
-        
-        function pegaValorInput(event){
-            event.preventDefault()
-            let valorDigitado = input.value
-            if(!valorDigitado) return
+function criaBotaoApagar(li) {
+  li.innerText += ' ';
+  const botaoApagar = document.createElement('button');
+  botaoApagar.innerText = 'Apagar';
+  // botaoApagar.classList.add('apagar');
+  botaoApagar.setAttribute('class', 'apagar');
+  botaoApagar.setAttribute('title', 'Apagar esta tarefa');
+  li.appendChild(botaoApagar);
+}
 
-            mostraInputTela(valorDigitado)
-            limpaInput()
-            criaBotoes()
-        }
+function criaTarefa(textoInput) {
+  const li = criaLi();
+  li.innerText = textoInput;
+  tarefas.appendChild(li);
+  limpaInput();
+  criaBotaoApagar(li);
+  salvarTarefas();
+}
 
-        function mostraInputTela(digitado){
-            let criaNovoInput = document.createElement('input')
-            criaNovoInput.disabled = true
-            criaNovoInput.value = digitado
-            formulario.appendChild(criaNovoInput)
+btnTarefa.addEventListener('click', function() {
+  if (!inputTarefa.value) return;
+  criaTarefa(inputTarefa.value);
+});
 
-            
-        }
+document.addEventListener('click', function(e) {
+  const el = e.target;
 
-        function limpaInput(){
-            input.value = '';
-            input.focus();
-        }
+  if (el.classList.contains('apagar')) {
+    el.parentElement.remove();
+    salvarTarefas();
+  }
+});
 
-        function criaBotoes(){
+function salvarTarefas() {
+  const liTarefas = tarefas.querySelectorAll('li');
+  const listaDeTarefas = [];
 
-            let botaoRemover = document.createElement('button')
-            botaoRemover.setAttribute('class','remover')
-            botaoRemover.innerText = 'Remover';
-            formulario.appendChild(botaoRemover)
-        }
+  for (let tarefa of liTarefas) {
+    let tarefaTexto = tarefa.innerText;
+    tarefaTexto = tarefaTexto.replace('Apagar', '').trim();
+    listaDeTarefas.push(tarefaTexto);
+  }
 
+  const tarefasJSON = JSON.stringify(listaDeTarefas);
+  localStorage.setItem('tarefas', tarefasJSON);
+}
 
-    }
-    escopo()
+function adicionaTarefasSalvas() {
+  const tarefas = localStorage.getItem('tarefas');
+  const listaDeTarefas = JSON.parse(tarefas);
+
+  for(let tarefa of listaDeTarefas) {
+    criaTarefa(tarefa);
+  }
+}
+adicionaTarefasSalvas();

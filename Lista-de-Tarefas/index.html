@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/CSS/style.css">
-    <title>Lista de Tarefas</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Modelo</title>
+  <link rel="stylesheet" href="./assets/CSS/style.css">
 </head>
+
 <body>
 
-    <div class="container">
-        
-            <h1>Lista de Tarefas</h1>
-    
-            <form class="formulario">
-                <p for="">Adicione a Tarefa</p>
-                <input type="text" class="input-Adicionar">
-                <button class="adicionar">Adicionar</button>
-            </form>
-    </div>
+  <section class="container">
+    <h1>Lista de tarefas</h1>
+    <p>
+      <input type="text" class="input-tarefa">
+      <button class="btn-tarefa">Adicionar nova tarefa</button>
+    </p>
 
-    <script src="./assets/JS/script.js"></script>
+    <ul class="tarefas"></ul>
+  </section>
+
+  <script src="./assets/JS/script.js"></script>
 </body>
+
 </html>
